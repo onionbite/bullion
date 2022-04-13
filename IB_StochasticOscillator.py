@@ -68,19 +68,6 @@ for ticker in tickers:
     histData(tickers.index(ticker),usTechStk(ticker),"2 D","5 mins")
     time.sleep(3)
 
-
-#extract info periodically 
-#starttime = time.time()
-#timeout = starttime + 60*5
-
-#while time.time() <= timeout:
-#    for ticker in tickers:
-#        histData(tickers.index(ticker),usTechStk(ticker),"3600 S", "30 secs")
-#        time.sleep(10)
-#    historical_data = dataDataframe(tickers,app)
-#    time.sleep(30 - ((time.time()-starttime)%30)) 
-
-
 def stchO(DF, a=20,b=3):
     df = DF.copy()
     df["C-L"] = df["Close"] - df["Low"].rolling(a).min()
