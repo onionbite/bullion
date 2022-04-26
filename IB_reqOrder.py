@@ -45,7 +45,7 @@ def websocket_con():
     app.run() 
 
 app = TradingApp()      
-app.connect("127.0.0.1", 7497, clientId=1)
+app.connect("127.0.0.1", 7497, clientId=4)
 
 # starting a separate daemon thread to execute the websocket connection
 con_thread = threading.Thread(target=websocket_con, daemon=True)
@@ -53,9 +53,9 @@ con_thread.start()
 time.sleep(1) #ensure that the connection is established
 
 #req profit and loss
-#app.reqPnL(9001, "DU5476079", "")
-#time.sleep(5)
-#pnlInfo = app.pnl_df
+app.reqPnL(9001, "DU5476079", "")
+time.sleep(5)
+pnlInfo = app.pnl_df
 
 #req account summary
 #app.reqAccountSummary(9001, "All", "$LEDGER:ALL")

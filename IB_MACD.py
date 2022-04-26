@@ -25,7 +25,7 @@ class TradingApp(EWrapper,EClient):
         print("redID:{}, date:{}, open:{}, high:{}, low:{}, close:{}, volume:{}".format(reqId,bar.date,bar.open,bar.high,bar.low,bar.close,bar.volume))
         
 
-def usTechStk(symbol,sec_type="STK",currency="USD",exchange="ISLAND"):
+def usTechStk(symbol,sec_type="CASH",currency="MXN",exchange="IDEALPRO"):
     contract = Contract()
     contract.symbol = symbol
     contract.secType = sec_type
@@ -62,7 +62,7 @@ def dataDataframe(symbols,tradeapp):
         df_data[sym].set_index("Date",inplace=True)
     return df_data
 
-tickers = ["FB","AMZN","INTC"]
+tickers = ["USD","GBP","EUR"]
 
 for ticker in tickers:
     histData(tickers.index(ticker),usTechStk(ticker),"2 D","5 mins")
@@ -85,6 +85,4 @@ def MACD(DF, a=12,b=26,c=9):
     return df
 
 
-MACD(historicalData["AMZN"],12,26,9)
-
-    
+macd_df = MACD(historicalData["GBP"],12,26,9)
